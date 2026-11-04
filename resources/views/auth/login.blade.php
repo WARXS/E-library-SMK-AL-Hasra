@@ -1,55 +1,44 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<x-auth-layout
+    title="Selamat Datang Kembali"
+    description="Masuk untuk menjelajahi koleksi dan mengelola peminjaman buku sekolah."
+>
+    <x-auth-session-status class="auth-status" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    @if ($errors->any())
+        <div class="form-alert" role="alert">{{ $errors->first() }}</div>
+    @endif
+
+    <form method="POST" action="{{ route('login') }}" class="auth-form" data-loading-form>
         @csrf
 
-        <x-text-input
-        id="email"
-        class="block mt-1 w-full"
-        type="email"
-        name="email"
-        :value="old('email')"
-        required autofocus autocomplete="username"
-        placeholder="masukan gmail anda"
-        />
-
-        <x-input-error
-        :messages="$errors->get('email')"
-            class="mt-2"
-        />
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="nama@email.com" aria-describedby="email-error">
+            <x-input-error :messages="$errors->get('email')" id="email-error" class="field-error" />
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+        <div class="form-field">
+            <div class="field-label-row">
+                <label for="password">Password</label>
+                @if (Route::has('password.request'))
+                    <a class="text-link" href="{{ route('password.request') }}">Lupa password?</a>
+                @endif
+            </div>
+            <div class="password-control">
+                <input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" aria-describedby="password-error">
+                <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button>
+            </div>
+            <x-input-error :messages="$errors->get('password')" id="password-error" class="field-error" />
+        </div>
+
+        <div class="form-options">
+            <label class="checkbox-label" for="remember_me">
+                <input id="remember_me" type="checkbox" name="remember" value="1" @checked(old('remember'))>
+                <span>Ingat saya</span>
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
+        <button class="button-primary button-full" type="submit" data-submit-label data-default-label="Masuk" data-loading-label="Memproses…">Masuk</button>
+        <p class="form-footnote">Belum memiliki akun siswa? <a class="text-link" href="{{ route('register') }}">Daftar sekarang</a></p>
     </form>
-</x-guest-layout>
+</x-auth-layout>

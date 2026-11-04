@@ -1,52 +1,46 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<x-auth-layout
+    title="Buat Akun Siswa"
+    description="Daftarkan akun untuk mengakses layanan perpustakaan digital SMK Al-Hasra."
+    variant="register"
+>
+    @if ($errors->any())
+        <div class="form-alert" role="alert">Mohon periksa kembali data yang ditandai di bawah.</div>
+    @endif
+
+    <form method="POST" action="{{ route('register') }}" class="auth-form auth-form--register" data-loading-form>
         @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="form-field">
+            <label for="name">Nama lengkap</label>
+            <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" placeholder="Nama sesuai identitas sekolah" aria-describedby="name-error">
+            <x-input-error :messages="$errors->get('name')" id="name-error" class="field-error" />
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required autocomplete="username" placeholder="nama@email.com" aria-describedby="email-error">
+            <x-input-error :messages="$errors->get('email')" id="email-error" class="field-error" />
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="form-field">
+            <label for="password">Password</label>
+            <div class="password-control">
+                <input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" aria-describedby="password-error">
+                <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button>
+            </div>
+            <x-input-error :messages="$errors->get('password')" id="password-error" class="field-error" />
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="form-field">
+            <label for="password_confirmation">Konfirmasi password</label>
+            <div class="password-control">
+                <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" aria-describedby="password-confirmation-error">
+                <button class="password-toggle" type="button" data-password-toggle="password_confirmation" aria-label="Tampilkan konfirmasi password" aria-pressed="false">Tampilkan</button>
+            </div>
+            <x-input-error :messages="$errors->get('password_confirmation')" id="password-confirmation-error" class="field-error" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
+        <button class="button-primary button-full" type="submit" data-submit-label data-default-label="Daftar" data-loading-label="Memproses…">Daftar</button>
+        <p class="form-footnote">Sudah memiliki akun? <a class="text-link" href="{{ route('login') }}">Masuk</a></p>
     </form>
-</x-guest-layout>
+</x-auth-layout>

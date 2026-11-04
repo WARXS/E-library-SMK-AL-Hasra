@@ -48,6 +48,12 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        if ($user->peminjamans()->exists()) {
+            return Redirect::back()->withErrors([
+                'password' => 'Akun tidak dapat dihapus karena memiliki riwayat peminjaman.',
+            ], 'userDeletion');
+        }
+
         Auth::logout();
 
         $user->delete();

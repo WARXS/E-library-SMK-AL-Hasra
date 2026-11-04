@@ -1,0 +1,72 @@
+:root {
+    color-scheme: light;
+
+    --font-family-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+
+    --color-page: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f1f5f9;
+    --color-text: #0f172a;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-primary-contrast: #ffffff;
+    --color-success: #15803d;
+    --color-success-surface: #dcfce7;
+    --color-warning: #b45309;
+    --color-warning-surface: #fef3c7;
+    --color-danger: #b91c1c;
+    --color-danger-surface: #fee2e2;
+    --color-info: #1d4ed8;
+    --color-info-surface: #dbeafe;
+
+    --radius-control: 0.5rem;
+    --radius-card: 0.75rem;
+    --radius-panel: 1rem;
+    --radius-pill: 9999px;
+
+    --shadow-card: 0 1px 3px rgb(15 23 42 / 0.08), 0 1px 2px rgb(15 23 42 / 0.06);
+    --shadow-panel: 0 10px 25px rgb(15 23 42 / 0.10);
+
+    --duration-fast: 120ms;
+    --duration-base: 180ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --transition-colors: color var(--duration-base) var(--ease-standard),
+        background-color var(--duration-base) var(--ease-standard),
+        border-color var(--duration-base) var(--ease-standard),
+        fill var(--duration-base) var(--ease-standard),
+        stroke var(--duration-base) var(--ease-standard);
+}
+
+:root.dark {
+    color-scheme: dark;
+
+    --color-page: #020617;
+    --color-surface: #0f172a;
+    --color-surface-muted: #1e293b;
+    --color-text: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-border: #334155;
+    --color-primary: #4f46e5;
+    --color-primary-hover: #6366f1;
+    --color-primary-contrast: #ffffff;
+    --color-success: #4ade80;
+    --color-success-surface: #14532d;
+    --color-warning: #fbbf24;
+    --color-warning-surface: #78350f;
+    --color-danger: #f87171;
+    --color-danger-surface: #7f1d1d;
+    --color-info: #60a5fa;
+    --color-info-surface: #1e3a8a;
+
+    --shadow-card: 0 1px 3px rgb(0 0 0 / 0.25), 0 1px 2px rgb(0 0 0 / 0.18);
+    --shadow-panel: 0 10px 25px rgb(0 0 0 / 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --duration-fast: 0ms;
+        --duration-base: 0ms;
+    }
+}

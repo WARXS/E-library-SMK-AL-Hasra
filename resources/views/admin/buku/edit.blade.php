@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Buku - Library Al-Hasra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/css/design-tokens.css'])
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-6 py-10">
+
+        <div class="mb-8">
+            <a href="{{ route('admin.buku.index') }}"
+               class="text-blue-600 hover:underline">
+                ← Kembali ke Manajemen Buku
+            </a>
+
+            <h1 class="text-3xl font-bold text-gray-800 mt-4">
+                Edit Buku
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+                Perbarui informasi buku yang tersimpan.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-8">
+
+            @if (session('error'))
+                <div class="bg-red-100 text-red-700 p-4 rounded-lg mb-5">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            <form action="{{ route('admin.buku.update', $buku->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="stok_saat_dimuat" value="{{ $buku->stok }}">
+
+                <div class="space-y-5">
+
+                    <div>
+                        <label class="block font-medium mb-2">Judul Buku</label>
+                        <input type="text" name="judul"
+                            value="{{ old('judul', $buku->judul) }}"
+                            class="w-full border rounded-lg px-4 py-3">
+                        <x-input-error :messages="$errors->get('judul')" class="mt-2" />
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2">Penulis</label>
+                        <input type="text" name="penulis"
+                            value="{{ old('penulis', $buku->penulis) }}"
+                            class="w-full border rounded-lg px-4 py-3">
+                        <x-input-error :messages="$errors->get('penulis')" class="mt-2" />
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2">Penerbit</label>
+                        <input type="text" name="penerbit"
+                            value="{{ old('penerbit', $buku->penerbit) }}"
+                            class="w-full border rounded-lg px-4 py-3">
+                        <x-input-error :messages="$errors->get('penerbit')" class="mt-2" />
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2">Tahun Terbit</label>
+                        <input type="number" name="tahun_terbit"
+                            value="{{ old('tahun_terbit', $buku->tahun_terbit) }}"
+                            class="w-full border rounded-lg px-4 py-3">
+                        <x-input-error :messages="$errors->get('tahun_terbit')" class="mt-2" />
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2">Stok Tersedia</label>
+                        <p class="text-sm text-gray-500 mb-2">Jumlah buku yang saat ini tersedia secara fisik dan siap dipinjam. Buku yang sedang dipinjam tidak termasuk.</p>
+                        <input type="number" name="stok" min="0" step="1" required
+                            value="{{ old('stok', $buku->stok) }}"
+                            class="w-full border rounded-lg px-4 py-3">
+                        <x-input-error :messages="$errors->get('stok')" class="mt-2" />
+                    </div>
+
+                    <div class="flex justify-end gap-3 pt-4">
+                        <a href="{{ route('admin.buku.index') }}"
+                           class="px-5 py-3 rounded-lg bg-gray-200 hover:bg-gray-300">
+                            Batal
+                        </a>
+
+                        <button type="submit"
+                            class="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+                            Simpan Perubahan
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>
