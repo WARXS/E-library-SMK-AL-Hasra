@@ -64,14 +64,11 @@
                 </p>
 
                 <div class="mt-8 flex flex-wrap items-center gap-3">
-                    <a href="{{ route('login') }}" class="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-control)] bg-[color:var(--color-primary)] px-5 py-3 text-sm font-semibold text-[color:var(--color-primary-contrast)] shadow-[var(--shadow-card)] transition-colors hover:bg-[color:var(--color-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2 sm:px-6 sm:text-base">
-                        Mulai Membaca Buku
+                    <a href="{{ route('buku.index') }}" class="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-control)] bg-[color:var(--color-primary)] px-5 py-3 text-sm font-semibold text-[color:var(--color-primary-contrast)] shadow-[var(--shadow-card)] transition-colors hover:bg-[color:var(--color-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2 sm:px-6 sm:text-base">
+                        Jelajahi Katalog
                         <svg class="ms-2 h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                             <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                    </a>
-                    <a href="{{ route('buku.index') }}" class="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-control)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-3 text-sm font-semibold text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] sm:px-6 sm:text-base">
-                        Jelajahi Katalog
                     </a>
                 </div>
 

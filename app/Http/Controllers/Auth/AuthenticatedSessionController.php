@@ -36,19 +36,9 @@ class AuthenticatedSessionController extends Controller
         }
 
         if ($user->role === 'siswa') {
-            $intendedUrl = $request->session()->pull('url.intended');
-            $intendedPath = is_string($intendedUrl)
-                ? parse_url($intendedUrl, PHP_URL_PATH)
-                : null;
+            $request->session()->forget('url.intended');
 
-            if (in_array($intendedPath, [
-                route('peminjaman.store', absolute: false),
-                route('buku.index', absolute: false),
-            ], true)) {
-                return redirect()->route('buku.index');
-            }
-
-            return redirect()->route('siswa.dashboard');
+            return redirect()->route('buku.index');
         }
 
         Auth::logout();

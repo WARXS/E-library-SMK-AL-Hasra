@@ -32,15 +32,14 @@ class PeminjamanController extends Controller
         return back()->with('success', 'Pengajuan peminjaman berhasil dikirim! Menunggu persetujuan admin.');
     }
 
-    
     public function riwayat()
     {
-    $peminjamans = Peminjaman::with('buku')
-        ->where('user_id', Auth::id())
-        ->latest()
-        ->get();
+        $peminjamans = Peminjaman::with('buku')
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->get();
 
-    return view('admin.peminjaman.riwayat', compact('peminjamans'));
+        return view('siswa.riwayat-peminjaman', compact('peminjamans'));
     }
 
 }
