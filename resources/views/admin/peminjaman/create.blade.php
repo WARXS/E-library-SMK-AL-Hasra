@@ -12,10 +12,11 @@
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow px-8 py-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold text-blue-700">
-            Perpustakaan Al-Hasra
-        </h1>
+    <nav class="bg-white shadow px-4 sm:px-8 py-4 flex justify-between items-center gap-3">
+        <div class="flex min-w-0 items-center gap-3">
+            <x-back-button fallback="{{ route('admin.peminjaman.index') }}" />
+            <h1 class="truncate text-base sm:text-xl font-bold text-blue-700">Perpustakaan Al-Hasra</h1>
+        </div>
 
         <a href="{{ route('admin.dashboard') }}"
            class="text-blue-600 hover:text-blue-800">

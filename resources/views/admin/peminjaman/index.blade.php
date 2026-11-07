@@ -13,9 +13,10 @@
 
     <!-- Navbar -->
     <nav class="bg-white border-b px-6 py-4 flex justify-between">
-        <a href="{{ route('admin.dashboard') }}" class="font-bold text-xl">
-            Library <span class="text-indigo-600">Al-Hasra</span>
-        </a>
+        <div class="flex items-center gap-3">
+            <x-back-button fallback="{{ route('admin.dashboard') }}" />
+            <a href="{{ route('admin.dashboard') }}" class="font-bold text-xl">Library <span class="text-indigo-600">Al-Hasra</span></a>
+        </div>
 
         <a href="{{ route('admin.dashboard') }}" class="text-indigo-600">
             Dashboard Admin

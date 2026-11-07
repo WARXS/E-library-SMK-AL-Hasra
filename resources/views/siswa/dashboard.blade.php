@@ -13,10 +13,13 @@
 </head>
 <body class="bg-[color:var(--color-page)] text-[color:var(--color-text)] min-h-screen antialiased" style="font-family: var(--font-family-sans); transition: var(--transition-colors)">
 
-    <nav class="bg-[color:var(--color-surface)] shadow-[var(--shadow-card)] border-b border-[color:var(--color-border)] text-[color:var(--color-text)] px-8 py-4 flex justify-between items-center transition-colors">
-        <h1 class="text-xl font-bold text-[color:var(--color-primary)]">
-            Perpustakaan Al-Hasra
-        </h1>
+    <nav class="bg-[color:var(--color-surface)] shadow-[var(--shadow-card)] border-b border-[color:var(--color-border)] text-[color:var(--color-text)] px-4 sm:px-8 py-4 flex justify-between items-center gap-3 transition-colors">
+        <div class="flex min-w-0 items-center gap-3">
+            <x-back-button fallback="{{ route('siswa.dashboard') }}" />
+            <h1 class="truncate text-base sm:text-xl font-bold text-[color:var(--color-primary)]">
+                Perpustakaan Al-Hasra
+            </h1>
+        </div>
 
         <div class="flex items-center gap-4">
             <span class="text-[color:var(--color-text-muted)]">

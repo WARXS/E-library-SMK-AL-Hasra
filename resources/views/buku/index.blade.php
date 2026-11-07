@@ -22,14 +22,17 @@
 <body class="site-page catalog-page">
     <header class="catalog-header">
         <nav class="catalog-nav" aria-label="Navigasi utama">
-            <a href="{{ url('/') }}" class="brand-lockup" aria-label="Library Al-Hasra — beranda">
-                <span class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 7v13m0-13C9.8 5.2 6.5 4.8 3 6v13c3.5-1.2 6.8-.8 9 1m0-13c2.2-1.8 5.5-2.2 9-1v13c-3.5-1.2-6.8-.8-9 1" />
-                    </svg>
-                </span>
-                <span class="brand-name">Library <span>Al-Hasra</span></span>
-            </a>
+            <div class="flex shrink-0 items-center gap-3">
+                <x-back-button />
+                <a href="{{ url('/') }}" class="brand-lockup" aria-label="Library Al-Hasra — beranda">
+                    <span class="brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 7v13m0-13C9.8 5.2 6.5 4.8 3 6v13c3.5-1.2 6.8-.8 9 1m0-13c2.2-1.8 5.5-2.2 9-1v13c-3.5-1.2-6.8-.8-9 1" />
+                        </svg>
+                    </span>
+                    <span class="brand-name">Library <span>Al-Hasra</span></span>
+                </a>
+            </div>
 
             <div class="catalog-nav-links">
                 <a href="{{ url('/') }}">Beranda</a>

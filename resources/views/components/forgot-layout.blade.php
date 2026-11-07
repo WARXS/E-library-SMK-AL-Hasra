@@ -16,6 +16,9 @@
     </head>
     <body class="site-page forgot-page font-sans text-[color:var(--color-text)] antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 forgot-page-shell">
+            <div class="fixed left-4 top-4 z-20 sm:left-6 sm:top-6">
+                <x-back-button />
+            </div>
             <div>
                 <a href="/" aria-label="Kembali ke beranda">
                     <x-application-logo class="w-20 h-20 fill-current text-[color:var(--color-text-muted)]" />

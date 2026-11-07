@@ -13,9 +13,10 @@
 
     <!-- Navbar -->
     <nav class="bg-white border-b px-6 py-4 flex justify-between items-center">
-        <a href="{{ route('buku.index') }}" class="font-bold text-xl">
-            Library <span class="text-indigo-600">Al-Hasra</span>
-        </a>
+        <div class="flex items-center gap-3">
+            <x-back-button fallback="{{ route('siswa.dashboard') }}" />
+            <a href="{{ route('buku.index') }}" class="font-bold text-xl">Library <span class="text-indigo-600">Al-Hasra</span></a>
+        </div>
 
         <a href="{{ route('buku.index') }}"
            class="text-indigo-600 hover:text-indigo-800">
