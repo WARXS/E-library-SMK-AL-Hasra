@@ -21,6 +21,45 @@ document.querySelectorAll('[data-loading-form]').forEach((form) => {
     });
 });
 
+const loanDialog = document.querySelector('[data-loan-dialog]');
+const loanDialogBook = loanDialog?.querySelector('[data-loan-dialog-book]');
+let pendingLoanForm = null;
+
+document.querySelectorAll('[data-loan-confirm]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+        if (form.dataset.loanConfirmed === 'true') {
+            delete form.dataset.loanConfirmed;
+            return;
+        }
+
+        event.preventDefault();
+        if (!loanDialog) return;
+
+        pendingLoanForm = form;
+        loanDialogBook.textContent = form.dataset.bookTitle || 'buku ini';
+        loanDialog.showModal();
+    });
+});
+
+loanDialog?.querySelector('[data-loan-cancel]')?.addEventListener('click', () => {
+    pendingLoanForm = null;
+    loanDialog.close();
+});
+
+loanDialog?.querySelector('[data-loan-submit]')?.addEventListener('click', () => {
+    if (!pendingLoanForm) return;
+
+    const form = pendingLoanForm;
+    pendingLoanForm = null;
+    form.dataset.loanConfirmed = 'true';
+    loanDialog.close();
+    form.requestSubmit();
+});
+
+loanDialog?.addEventListener('close', () => {
+    pendingLoanForm = null;
+});
+
 const catalog = document.querySelector('[data-catalog]');
 
 if (catalog) {

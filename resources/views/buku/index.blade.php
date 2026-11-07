@@ -151,7 +151,7 @@
                                     <span class="book-stock">Stok {{ $buku->stok }}</span>
                                 </div>
 
-                                <form action="{{ route('peminjaman.store') }}" method="POST" class="book-loan-form">
+                                <form action="{{ route('peminjaman.store') }}" method="POST" class="book-loan-form" data-loan-confirm data-book-title="{{ $buku->judul }}">
                                     @csrf
                                     <input type="hidden" name="buku_id" value="{{ $buku->id }}">
                                     <button type="submit" class="book-loan-button" {{ $buku->stok < 1 ? 'disabled' : '' }}>
@@ -170,5 +170,17 @@
             </section>
         </div>
     </main>
+
+    <dialog class="loan-confirm-dialog" data-loan-dialog aria-labelledby="loan-confirm-title" aria-describedby="loan-confirm-description">
+        <div class="loan-confirm-dialog__content">
+            <span class="loan-confirm-dialog__icon" aria-hidden="true">?</span>
+            <h2 id="loan-confirm-title">Konfirmasi peminjaman</h2>
+            <p id="loan-confirm-description">Kamu akan mengajukan peminjaman buku <strong data-loan-dialog-book></strong>. Pengajuan akan dikirim ke admin untuk disetujui.</p>
+            <div class="loan-confirm-dialog__actions">
+                <button type="button" class="loan-confirm-dialog__cancel" data-loan-cancel>Periksa lagi</button>
+                <button type="button" class="loan-confirm-dialog__submit" data-loan-submit>Ya, ajukan</button>
+            </div>
+        </div>
+    </dialog>
 </body>
 </html>
