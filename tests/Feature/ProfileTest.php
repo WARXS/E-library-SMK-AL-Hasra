@@ -21,6 +21,29 @@ class ProfileTest extends TestCase
         $response->assertOk();
     }
 
+    public function test_administrator_profile_displays_admin_identity_and_account_forms(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $response = $this
+            ->actingAs($admin)
+            ->get('/profile');
+
+        $response
+            ->assertOk()
+            ->assertSee('Profil Administrator')
+            ->assertSee('Administrator')
+            ->assertSee('Informasi Akun')
+            ->assertSee('Keamanan Akun')
+            ->assertSee('Zona Berbahaya')
+            ->assertSee('name="current_password"', false)
+            ->assertSee('name="password_confirmation"', false)
+            ->assertSee(route('admin.dashboard'))
+            ->assertSee(route('profile.update'))
+            ->assertSee(route('password.update'))
+            ->assertSee(route('profile.destroy'));
+    }
+
     public function test_profile_information_can_be_updated(): void
     {
         $user = User::factory()->create();
