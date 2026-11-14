@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <title>Library Al-Hasra — Perpustakaan Digital SMK Al-Hasra</title>
+    <meta name="description" content="Perpustakaan digital SMK Al-Hasra: jelajahi buku pelajaran, modul kejuruan, dan referensi.">
 
     @include('components.theme-init')
 
@@ -70,6 +71,13 @@
                             <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
+                    @if (Route::has('login'))
+           @guest
+        <a href="{{ route('login') }}" class="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-control)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-3 text-sm font-semibold text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] sm:px-6 sm:text-base">
+            Masuk
+        </a>
+@endguest
+            @endif
                 </div>
 
                 <p class="mt-5 text-sm text-[color:var(--color-text-muted)]">
@@ -120,5 +128,10 @@
             </figure>
         </section>
     </main>
+    <footer class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+    <div class="mx-auto max-w-7xl px-5 py-6 text-center text-sm text-[color:var(--color-text-muted)] sm:px-8">
+        &copy; {{ date('Y') }} Perpustakaan Digital SMK Al-Hasra
+    </div>
+</footer>
 </body>
 </html>

@@ -89,8 +89,8 @@
             </button>
 
             <aside class="filter-sidebar" id="catalog-filters" data-filter-sidebar aria-label="Filter koleksi berdasarkan penerbit">
-                <h2 class="filter-heading">Penerbit</h2>
-                <p class="filter-caption">Filter memakai nama penerbit yang tercatat pada data koleksi.</p>
+                <h2 class="filter-heading">Kategori</h2>
+                <p class="filter-caption">Filter berdasarkan kategori buku.</p>
                 <div class="filter-list">
                     <button class="filter-option" type="button" data-publisher-filter="" aria-pressed="true">
                         <span>Semua buku</span>
